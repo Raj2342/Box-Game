@@ -1,0 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class collision: MonoBehaviour
+{
+    public player Playerscript; 
+   // private void OnCollisionEnter(Collision other)
+   // {
+        // Debug.Log(" player is collided");
+        // Debug.Log(other.gameObject.name);
+        //if (other.gameObject.tag == "collectbox")
+        //{
+        //    Destroy(other.gameObject);
+        //}
+   // }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "collectbox")
+        {
+            Destroy(other.gameObject); 
+        }
+    }
+
+    private void OnCollisionEnter(Collision  other)
+    {
+        if (other.gameObject.tag == "bluecollectbox") 
+        {
+            Playerscript.enabled = false;
+        }
+    }
+
+
+
+
+}
