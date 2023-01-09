@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class player : MonoBehaviour
+{
+    // variable 
+    public Rigidbody RIGIDBODY;
+    public float force = 1000;
+    public float speed = 1000;
+    public float max;
+    public float min;
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // for player ground  se neeche na gere  make : consition and variable 
+        Vector3 playerposi = transform.position;
+        if (playerposi.x < min)// left positive value 
+        {
+            playerposi.x = min;
+        }
+        if (playerposi.x > max)
+        {
+            playerposi.x = max;
+        }
+        //playerposi.x = Mathf.Clamp(playerposi.x, max, min);// secons method use 
+        transform.position = playerposi;
+
+
+
+        //playerposi = transform.position; it is not used becoz it create error 
+
+
+        if (Input.GetKey(KeyCode.RightArrow /* ) || Input.GetKey(KeyCode.Keypad6*/)) // use only or operator 
+        {
+            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
+            //transform.position = transform.position + new Vector3(10f * Time.deltaTime, 0, 0);// it is goo for car game   slow -2 right side shift karana 
+            // RIGIDBODY.AddForce(1000F * Time.deltaTime,0, 0);  // box  game ke leye accha hai 
+
+            //Debug.Log(" right arrow key is pressed ");
+        }
+        if (Input.GetKey(KeyCode.Keypad6))
+        {
+            transform.position = transform.position + new Vector3(speed * Time.deltaTime, 0, 0);
+
+        }
+        if (Input.GetKey(KeyCode.Keypad4)) // for keyboardD ::: keycode.D
+        {
+            transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
+
+        }
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+
+            transform.position = transform.position - new Vector3(speed * Time.deltaTime, 0, 0);
+
+            // transform.position = transform.position - new Vector3(10f * Time.deltaTime, 0, 0);
+            // RIGIDBODY.AddForce(-1000F * Time.deltaTime, 0, 0 );
+
+            // Debug.Log(" left key arrow is pressed ");
+        }
+
+    }
+    private void FixedUpdate()
+    {
+        RIGIDBODY.AddForce(0, 0, force * Time.deltaTime);
+
+    }
+}
