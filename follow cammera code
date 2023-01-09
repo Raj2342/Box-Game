@@ -1,0 +1,58 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class followC : MonoBehaviour //     topic ----  cammera follow player only z direction 
+{ /* ↓ you can understand  upper synex and lower syntex :: cammwer  player ko follow kare but cammer player ki kis chij ko follow karega  vo hai uske position
+    aur 'postion'  ' transform ' ke ander hai .         */
+    public Transform playertransform;
+    public float offset;
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        // transform.position.z /* it is player position in z direction */=  playertransform.position/* it is cammera postion in z direction */
+        /* it is showing error becoz kisi bhi player ki position direct nahi likh  sakte   uske leye  variable create karna hoga  */
+
+        Vector3 camerapos = transform.position;
+        camerapos.z = playertransform.position.z + offset; // camerapos  hi playertransform hai  koi dusra nahi hai 
+                                                           // now abb ham  camera ki  position ko player ki postion ke baraber karenge 
+                                                           // position of cammera = camerapos and  playertransform ,   position of player  = transform. position 
+        transform.position = camerapos;
+
+        // but again  problem cammera player ke parellal chal raha hai jiske  karan player he nahi dekh raha
+        /* offset method  create variable*/
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
